@@ -8,40 +8,44 @@ type ArchedWindowProps = {
   windowHeight: number;
 
   // Apparence de la bordure extérieure de la fenêtre
-  borderColor?: string; // Couleur du contour de la fenêtre
-  strokeWidth?: number; // Épaisseur du contour extérieur
-  strokeColor?: string; // Couleur du trait principal de contour
-  innerStrokeColor?: string; // Couleur du trait intérieur (par exemple pour le vitrage)
-  innerFillColor?: string; // Couleur de remplissage de l'intérieur (ex: vitre)
-  innerMargin?: number; // Marge entre la bordure et le contenu intérieur
+  borderColor?: string;
+  strokeWidth?: number;
+  strokeColor?: string;
+  innerStrokeColor?: string;
+  innerFillColor?: string;
+  innerMargin?: number;
   windowBorderX?: number;
   windowBorderY?: number;
 
-  // Propriétés liées à l’ouverture de la fenêtre
+  // Propriétés liées à l'ouverture de la fenêtre
   horizontalOpeningDirection?: "left" | "right";
   verticalOpeningDirection?: "up" | "down";
 
   // Propriétés liées au soubassement
-  hasBase?: boolean; // Active ou non le soubassement
-  hasBaseWindow?: boolean; // Active ou non une fenêtre dans le soubassement
+  hasBase?: boolean;
+  hasBaseWindow?: boolean;
   baseWindowMargin?: number;
   baseHeight?: number;
   baseMargin?: number;
   baseColor?: string;
+  soubassementStrokeWidth?: number; // Déjà présent mais rendre optionnel
 
   // Petits bois
-  hasSill?: boolean; // Active les petits bois
-  sillCountX?: number; // Nécessite hasSill = true
-  sillCountY?: number; // Nécessite hasSill = true
+  hasSill?: boolean;
+  sillCountX?: number;
+  sillCountY?: number;
+  sillStrokeColor?: string;
+  sillStrokeWidth?: number;
+  petitsBoisStyle?: string;
 
   // Traverses
-  hasTraverse?: boolean; // Active ou non les traverses
-  traverseCountX?: number; // Nécessite hasTraverse = true
-  traverseCountY?: number; // Nécessite hasTraverse = true
-  traverseWidth?: number; // // Nécessite hasTraverse = true  (Largeur des traverses)
+  hasTraverse?: boolean;
+  traverseCountX?: number;
+  traverseCountY?: number;
+  traverseWidth?: number;
 
-  // Forme de l’arc supérieur de la fenêtre
-  arcType?: "leger" | "plein-cintre"; // Type d’arc : léger ou plein cintre (semi-circulaire)
+  // Forme de l'arc supérieur de la fenêtre
+  arcType?: "leger" | "plein-cintre";
 
   // Affichage des cotes dimensionnelles
   showWidthCote?: boolean;

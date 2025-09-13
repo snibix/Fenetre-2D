@@ -3,6 +3,8 @@ import { Layer, Stage } from "react-konva";
 import ArchedWindow from "./components/ArchedWindow/ArchedWindow";
 import Window from "./components/Window/Window";
 
+type ArcType = "leger" | "plein-cintre";
+
 const HomePage: React.FC = () => {
   const [formData, setFormData] = useState({
     windowType: "arched",
@@ -41,7 +43,7 @@ const HomePage: React.FC = () => {
     traverseCountY: 1,
     traverseWidth: 6,
 
-    arcType: "leger",
+    arcType: "leger" as ArcType,
 
     showWidthCote: true,
     showHeightCote: true,
@@ -50,16 +52,20 @@ const HomePage: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, type, value, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]:
-        type === "checkbox"
-          ? checked
-          : type === "number"
-          ? Number(value)
-          : value,
-    }));
+    const { name, type, value } = e.target;
+
+    if (e.target instanceof HTMLInputElement && type === "checkbox") {
+      const { checked } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: checked,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: type === "number" ? Number(value) : value,
+      }));
+    }
   };
 
   // Fonction spéciale pour gérer le changement de type de soubassement
